@@ -1,6 +1,9 @@
 const express = require("express");
 const expressSession = require("express-session");
 const { graphqlHTTP } = require("express-graphql");
+const dotenv = require("dotenv");
+
+dotenv.config();
 
 const schema = require("./graphQlSchema/Schema");
 const resolver = require("./graphQlResolver/Resolver");
@@ -10,7 +13,7 @@ const isAuthenticated = require("./MiddleWare/AuthMiddleware");
 
 const app = express();
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
