@@ -1,5 +1,5 @@
 const express = require("express");
-const expressSession = require("express-session");
+const cookieSession = require("cookie-session");
 const { graphqlHTTP } = require("express-graphql");
 const dotenv = require("dotenv");
 
@@ -22,11 +22,12 @@ require("./Modal/db");
 
 //routes
 app.use(isAuthenticated);
+
+app.set("trust proxy", 1);
 app.use(
-  expressSession({
-    secret: "hello express",
-    resave: true,
-    saveUninitialized: false,
+  cookieSession({
+    name: "session",
+    keys: ["key1", "key2"],
   })
 );
 
