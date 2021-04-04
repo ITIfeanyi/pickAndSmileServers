@@ -26,13 +26,16 @@ app.use(isAuthenticated);
 app.set("trust proxy", 1);
 app.use(
   cookieSession({
-    name: "session",
+    name: "sessionPick&smile",
     keys: ["key1", "key2"],
   })
 );
 
 app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Origin",
+    "https://pickandsmile.netlify.app/"
+  );
   res.setHeader(
     "Access-Control-Allow-Method",
     "OPTIONS, GET, PATCH, POST, DELETE"
