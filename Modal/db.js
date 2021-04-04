@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 mongoose.connect(
-  `${process.env.MONGO_URI}`,
+  `mongodb+srv://pickandsmile:ECI3F0sY9yWgmi47@cluster0.ecyvm.mongodb.net/pickAndSmile?retryWrites=true&w=majority`,
   {
     useCreateIndex: true,
     useFindAndModify: true,
