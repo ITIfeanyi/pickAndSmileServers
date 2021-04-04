@@ -20,17 +20,6 @@ app.use(express.urlencoded({ extended: true }));
 
 require("./Modal/db");
 
-//routes
-app.use(isAuthenticated);
-
-app.set("trust proxy", 1);
-app.use(
-  cookieSession({
-    name: "sessionPick&smile",
-    keys: ["key1", "key2"],
-  })
-);
-
 app.use((req, res, next) => {
   res.setHeader(
     "Access-Control-Allow-Origin",
@@ -49,6 +38,17 @@ app.use((req, res, next) => {
   }
   next();
 });
+
+//routes
+app.use(isAuthenticated);
+
+app.set("trust proxy", 1);
+app.use(
+  cookieSession({
+    name: "sessionPick&smile",
+    keys: ["key1", "key2"],
+  })
+);
 
 app.use(
   "/graphql",
