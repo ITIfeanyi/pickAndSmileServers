@@ -2,6 +2,7 @@ const express = require("express");
 const cookieSession = require("cookie-session");
 const { graphqlHTTP } = require("express-graphql");
 const dotenv = require("dotenv");
+const cors = require("cors");
 
 dotenv.config();
 
@@ -19,25 +20,26 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 require("./Modal/db");
+app.use(cors());
 
-app.use((req, res, next) => {
-  res.setHeader(
-    "Access-Control-Allow-Origin",
-    "https://pickandsmile.netlify.app/"
-  );
-  res.setHeader(
-    "Access-Control-Allow-Method",
-    "OPTIONS, GET, PATCH, POST, DELETE"
-  );
-  res.setHeader(
-    "Access-Control-Allow-Headers",
-    "Authorization, Content-Type, "
-  );
-  if (req.method === "OPTIONS") {
-    return res.sendStatus(200);
-  }
-  next();
-});
+// app.use((req, res, next) => {
+//   res.setHeader(
+//     "Access-Control-Allow-Origin",
+//     "https://pickandsmile.netlify.app/"
+//   );
+//   res.setHeader(
+//     "Access-Control-Allow-Method",
+//     "OPTIONS, GET, PATCH, POST, DELETE"
+//   );
+//   res.setHeader(
+//     "Access-Control-Allow-Headers",
+//     "Authorization, Content-Type, "
+//   );
+//   if (req.method === "OPTIONS") {
+//     return res.sendStatus(200);
+//   }
+//   next();
+// });
 
 //routes
 app.use(isAuthenticated);
