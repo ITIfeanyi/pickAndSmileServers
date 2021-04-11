@@ -5,6 +5,8 @@ const schema = buildSchema(`
  type Query {
      info:String!
      getProducts:[PRODUCT!]!
+     getSkincare:[PRODUCT!]!
+     getSingleProduct(id:ID):PRODUCT!
      getOrder:[ORDER!]!
      login(email:String! password:String!) : AuthPayLoad!
  }  

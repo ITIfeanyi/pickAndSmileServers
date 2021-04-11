@@ -37,13 +37,32 @@ const loginFormatErrors = async (err) => {
 
 const resolver = {
   getProducts: async () => {
-    const getAllProducts = await Product.find();
+    const getAllProducts = await Product.find({ category: "Groceries" });
     return getAllProducts.map((product) => {
       return {
         id: product._id,
         ...product._doc,
       };
     });
+  },
+  getSkincare: async () => {
+    const getAllProducts = await Product.find({ category: "Skincare" });
+    return getAllProducts.map((product) => {
+      return {
+        id: product._id,
+        ...product._doc,
+      };
+    });
+  },
+
+  getSingleProduct: async (args) => {
+    const { id } = args;
+
+    const singleProduct = await Product.findById(id);
+    return {
+      id: singleProduct.id,
+      ...singleProduct._doc,
+    };
   },
 
   createProduct: async (args) => {
