@@ -7,6 +7,7 @@ const schema = buildSchema(`
      getProducts:[PRODUCT!]!
      getSkincare:[PRODUCT!]!
      getSingleProduct(id:ID):PRODUCT!
+     getProductCategory(category:ProductCategory):[PRODUCT!]!
      getOrder:[ORDER!]!
      login(email:String! password:String!) : AuthPayLoad!
  }  
@@ -19,13 +20,10 @@ const schema = buildSchema(`
      Groceries
      Skincare
      Appliances
-     Phones
      Clothes
      Computers
-     Toys
      Kitchen
      Health
-     Funiture
  }
 
  type PRODUCT {
