@@ -17,6 +17,7 @@ const schema = buildSchema(`
 }
 
  enum ProductCategory{
+     Camera
      Groceries
      Skincare
      Appliances

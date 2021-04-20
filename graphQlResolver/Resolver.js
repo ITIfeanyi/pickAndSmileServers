@@ -64,6 +64,7 @@ const resolver = {
     });
   },
 
+
   getSingleProduct: async (args) => {
     const { id } = args;
     const singleProduct = await Product.findById(id);
